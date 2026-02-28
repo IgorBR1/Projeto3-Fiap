@@ -1,0 +1,6 @@
+.env
+/node_modules
+/src/generated/prisma
+frontend/.next
+frontend/node_modules
+frontend/.env
