@@ -26,6 +26,9 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      - name: debug pastas
+        run: ls -R
+        
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
