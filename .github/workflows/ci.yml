@@ -32,21 +32,21 @@ jobs:
           node-version: "20"
 
       - name: Instalar dependências
-        working-directory: backend/projeto-2-fiap/post-service      
+        working-directory: backend/Projeto-2-fiap/post-service      
         run: npm install
 
       - name: Gerar cliente Prisma
-        working-directory: backend/projeto-2-fiap/post-service
+        working-directory: backend/Projeto-2-fiap/post-service
         run: npx prisma generate
 
       - name: Executar migrações do Prisma
-        working-directory: backend/projeto-2-fiap/post-service
+        working-directory: backend/Projeto-2-fiap/post-service
         run: npx prisma migrate deploy
 
       - name: Build do TypeScript
-        working-directory: backend/projeto-2-fiap/post-service
+        working-directory: backend/Projeto-2-fiap/post-service
         run: npm run build
 
       - name: Testes
-        working-directory: backend/projeto-2-fiap/post-service
+        working-directory: backend/Projeto-2-fiap/post-service
         run: npm test
