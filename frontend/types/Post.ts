@@ -3,4 +3,11 @@ export interface Post {
   title: string;
   content: string;
   createdAt: string;
+  author?: Author;
+  authorId: string;
+}
+
+export interface Author {
+  id: string;
+  name: string;
 }

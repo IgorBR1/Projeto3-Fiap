@@ -15,16 +15,16 @@ class PostsController {
   }
 
   async create(req: Request, res: Response) {
-    const { title, content } = req.body;
-    const newPost = await postsService.create({ title, content });
+    const { title, content,authorId } = req.body;
+    const newPost = await postsService.create({ title, content,authorId });
     return res.status(201).json(newPost);
   }
 
   async update(req: Request, res: Response) {
     const id = Number(req.params.id);
-    const { title, content } = req.body;
+    const { title, content,authorId  } = req.body;
 
-    const updated = await postsService.update(id, { title, content });
+    const updated = await postsService.update(id, { title, content,authorId });
     return res.json(updated);
   }
 

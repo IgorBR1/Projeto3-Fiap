@@ -72,6 +72,7 @@ import { useEffect, useState } from "react";
 import { getPosts } from "@/services/post.service";
 import PostList from "@/components/posts/PostList";
 import { Post } from "@/types/Post";
+import Link from "next/dist/client/link";
 
 export default function PostsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -95,7 +96,7 @@ export default function PostsPage() {
   }, []);
 
   return (
-    <div>
+    <div className="flex min-h-screen flex-col items-center gap-4 bg-zinc-50 font-sans dark:bg-black p-4">
       <h1>Posts</h1>
 
       {loading && <p>Carregando...</p>}
@@ -105,6 +106,11 @@ export default function PostsPage() {
       {!loading && posts.length > 0 && (
         <PostList posts={posts} />
       )}
+
+              <Link href="/" className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
+          Voltar
+        </Link>
+
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import prisma from "@/database/prisma";
-import { Post } from "@/models/Post";
+import { Prisma } from "@prisma/client";
 
 class PostsRepository {
   async getAll() {
-    return prisma.post.findMany({
+    return prisma.post.findMany({  include: {
+      author: true,
+    },
       orderBy: { id: "asc" },
     });
   }
@@ -14,13 +16,13 @@ class PostsRepository {
     });
   }
 
-  async create(data: Omit<Post, "id">) {
+  async create(data: Prisma.PostCreateInput) {
     return prisma.post.create({
       data,
     });
   }
 
-  async update(id: number, data: Partial<Post>) {
+  async update(id: number, data: Prisma.PostUpdateInput) {
     return prisma.post.update({
       where: { id },
       data,
@@ -44,7 +46,6 @@ class PostsRepository {
       orderBy: { id: "asc" },
     });
   }
-
 }
 
 export default new PostsRepository();
