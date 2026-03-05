@@ -1,8 +1,13 @@
 export const storage = {
-  get(key: string) {
+  get<T = unknown>(key: string): T | null {
     if (typeof window === "undefined") return null
-    const item = window.localStorage.getItem(key)
-    return item ? JSON.parse(item) : null
+
+    try {
+      const item = window.localStorage.getItem(key)
+      return item ? JSON.parse(item) as T : null
+    } catch {
+      return null
+    }
   },
 
   set(key: string, value: unknown) {

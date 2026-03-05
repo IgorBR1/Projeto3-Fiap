@@ -48,6 +48,10 @@ class PostsService {
     if (!term || term.trim() === "") return [];
     return postsRepository.search(term);
   }
+
+  async getByAuthorId(authorId: string) {
+    return postsRepository.getByAuthorId(authorId);
 }
 
+}
 export default new PostsService();

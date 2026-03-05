@@ -46,6 +46,17 @@ class PostsRepository {
       orderBy: { id: "asc" },
     });
   }
+
+  async getByAuthorId(authorId: string) {
+  return prisma.post.findMany({
+    where: { authorId },
+    orderBy: { createdAt: "asc" },
+    include: {
+      author: true,
+    },
+  });
+}
+
 }
 
 export default new PostsRepository();

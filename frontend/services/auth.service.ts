@@ -1,11 +1,32 @@
 import { api } from "./api";
+import { storage } from "@/utils/storage";
 
-export async function login(data: { email: string; password: string }) {
-  const response = await api.post("/auth/login", data);
-  return response.data;
+interface LoginData {
+  email: string;
+  password: string;
 }
 
-export async function register(data: any) {
-  const response = await api.post("/auth/register", data);
-  return response.data;
+interface LoginResponse {
+  token: string;
 }
+class AuthService {
+  async login(data: LoginData) {
+    const response = await api.post<LoginResponse>("/login", data);
+
+    const { token } = response.data;
+
+    storage.set("token", token);
+
+    return token;
+  }
+
+  async register(data: LoginData) {
+    await api.post("/users", data);
+  }
+
+  logout() {
+    storage.remove("token");
+  }
+}
+
+export const authService = new AuthService();

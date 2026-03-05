@@ -41,6 +41,11 @@ class PostsController {
     return res.json(posts);
   }
 
-}
+  async getMyPosts(req: Request, res: Response) {
+    const authorId = req.params.authorId as string;
+    const posts = await postsService.getByAuthorId(authorId);
+    return res.json(posts);
 
+}
+}
 export default new PostsController();
