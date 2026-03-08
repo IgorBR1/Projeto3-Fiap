@@ -3,9 +3,16 @@
 import { useEffect, useState } from "react";
 import { getPostById } from "@/services/post.service";
 import { Post } from "@/types/Post";
+import Link from "next/dist/client/link";
+interface User {
+  name: string;
+  [key: string]: any;
+}
+
 
 export default function Dashboard() {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [user, setUser] = useState<User | null>(null);
 useEffect(() => {
   async function fetchPosts() {
     const userStorage = localStorage.getItem("user");
@@ -13,6 +20,12 @@ useEffect(() => {
     if (!userStorage) {
       console.log("Usuário não encontrado");
       return;
+    }
+
+        const storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
 
     const user = JSON.parse(userStorage);
@@ -35,7 +48,7 @@ useEffect(() => {
       <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">
         Meus Posts
       </h1>
-      <h2>Bem vindo, {}!</h2>
+      <h2>Bem vindo, {user?.name}!</h2>
 
       {posts.length === 0 ? (
         <p className="text-gray-500">Nenhum post encontrado.</p>
@@ -51,11 +64,18 @@ useEffect(() => {
               <p className="text-xs text-gray-400">Autor: {post.author?.name}</p>
                     <p>Autor:{post.authorId ?? "No author ID"}</p>
                  <p>{`Criado por: ${post.author?.name ?? "Sem autor"}`}</p>
-
+              <Link href={`/posts/${post.id}`} className="text-blue-500 hover:underline border border-blue-500 px-2 py-1 rounded mt-2 inline-block">
+                Ver Detalhes
+              </Link>
             </li>
           ))}
         </ul>
+       
       )}
+       <Link href="/create-post" className="bg-green-500 text-white px-4 py-2 rounded">
+          Criar Post
+        </Link>
+        
     </div>
   );
 }

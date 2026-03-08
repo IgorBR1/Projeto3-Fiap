@@ -132,25 +132,23 @@ router.put("/:id", PostsController.update);
 router.delete("/:id", PostsController.delete);
 
 router.get("/author/:authorId", PostsController.getMyPosts);
-/** 
+/**
  * @swagger
  * /posts/author/{authorId}:
- *  get:
- *   summary: Retorna os posts de um autor específico
- *  parameters:
- *    - in: path
- *     name: authorId
- *    schema:
- *     type: string
- *    required: true
- *   description: ID do autor
- * responses:
- *  200:
- *   description: Lista de posts do autor retornada com sucesso
- *  404:
- *  description: Autor não encontrado
- * 
- * 
+ *   get:
+ *     summary: Retorna os posts de um autor específico
+ *     parameters:
+ *       - in: path
+ *         name: authorId
+ *         required: true
+ *         description: ID do autor
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Lista de posts do autor retornada com sucesso
+ *       404:
+ *         description: Autor não encontrado
  */
 
 export default router;

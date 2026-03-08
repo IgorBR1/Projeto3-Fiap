@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import postsService from "@/services/PostsService";
+import { getUserFromToken } from "@/utils/getUserFromToken";
 
 class PostsController {
 
@@ -15,7 +16,9 @@ class PostsController {
   }
 
   async create(req: Request, res: Response) {
-    const { title, content,authorId } = req.body;
+      const authorId = getUserFromToken(req);
+
+    const { title, content } = req.body;
     const newPost = await postsService.create({ title, content,authorId });
     return res.status(201).json(newPost);
   }
