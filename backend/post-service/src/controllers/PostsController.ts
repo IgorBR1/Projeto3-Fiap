@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import postsService from "@/services/PostsService";
 import { getUserFromToken } from "@/utils/getUserFromToken";
+import jwt from "jsonwebtoken";
+
 
 class PostsController {
 
@@ -36,6 +38,7 @@ class PostsController {
     const deleted = await postsService.delete(id);
     return res.json(deleted);
   }
+
 
   async search(req: Request, res: Response) {
     const term = req.query.q as string;

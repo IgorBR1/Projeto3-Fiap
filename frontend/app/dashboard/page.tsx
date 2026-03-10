@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getPostById } from "@/services/post.service";
 import { Post } from "@/types/Post";
 import Link from "next/dist/client/link";
+import PostList from "@/components/posts/PostList";
 interface User {
   name: string;
   [key: string]: any;
@@ -53,7 +54,7 @@ useEffect(() => {
       {posts.length === 0 ? (
         <p className="text-gray-500">Nenhum post encontrado.</p>
       ) : (
-        <ul className="space-y-4">
+        /*<ul className="space-y-4">
           {posts.map((post) => (
             <li
               key={post.id}
@@ -70,8 +71,12 @@ useEffect(() => {
             </li>
           ))}
         </ul>
+        */
+          <PostList posts={posts} />
        
       )}
+                   
+
        <Link href="/create-post" className="bg-green-500 text-white px-4 py-2 rounded">
           Criar Post
         </Link>

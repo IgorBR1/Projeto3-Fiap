@@ -13,6 +13,8 @@ class PostsRepository {
   async getById(id: number) {
     return prisma.post.findUnique({
       where: { id },
+      include: {  author: true,
+      }
     });
   }
 
