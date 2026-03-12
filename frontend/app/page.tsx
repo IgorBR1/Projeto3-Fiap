@@ -1,16 +1,41 @@
-import Link from "next/dist/client/link";
-
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <div className="flex flex-col items-center gap-4">
-        <Link href="/posts" className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-          Todos os Posts
-        </Link>
+    <div className="flex min-h-[calc(100vh-73px)] flex-col bg-zinc-50 font-sans dark:bg-zinc-950">
 
-       
-      </div>
+      <main className="flex flex-1 flex-col items-center justify-center px-6 text-center">
+
+        <div className="mb-6 inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-600 dark:border-indigo-900/50 dark:bg-indigo-900/20 dark:text-indigo-400">
+          <span className="flex h-2 w-2 rounded-full bg-indigo-600 mr-2 animate-pulse"></span>
+          Ambiente Acadêmico Digital
+        </div>
+
+        <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-6xl dark:text-zinc-50">
+          Aprenda e compartilhe conhecimento
+        </h1>
+
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+          Uma plataforma dedicada para professores e estudantes trocarem artigos, materiais de estudo e vivências acadêmicas de forma simples e direta.
+        </p>
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-x-6 gap-y-4 sm:flex-row">
+          <Link
+            href="/posts"
+            className="w-full sm:w-auto rounded-lg bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all dark:bg-indigo-500 dark:hover:bg-indigo-400"
+          >
+            Explorar Todos os Posts
+          </Link>
+
+          <Link
+            href="/register"
+            className="text-base font-semibold leading-6 text-zinc-900 hover:text-indigo-600 transition-colors dark:text-zinc-100 dark:hover:text-indigo-400"
+          >
+            Comece a escrever <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+
+      </main>
     </div>
   );
 }
