@@ -23,6 +23,10 @@ jest.mock('../../src/repositories/PostsRepository', () => ({
   }
 }));
 
+jest.mock('../../src/utils/getUserFromToken', () => ({
+  getUserFromToken: jest.fn(() => 'mock-user-id')
+}));
+
 describe('Posts API', () => {
 
   it('deve criar um novo post (POST /api/posts)', async () => {

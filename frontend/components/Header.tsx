@@ -85,7 +85,6 @@ window.location.href = "/"
           >
             Sair
           </button>
-
         </div>
       ) : (
         <div className="flex gap-4">
@@ -99,10 +98,8 @@ window.location.href = "/"
  href="/register">
             Registrar
           </Link>
-
         </div>
       )}
-
     </header>
   );
 }
