@@ -63,7 +63,7 @@ console.log("USER:", user);
   }
 
   const token = jwt.sign(
-    { id: user.id, email: user.email },
+    { id: user.id, email: user.email, role: user.role },
     process.env.JWT_SECRET as string,
     { expiresIn: "1h" }
   );
@@ -73,6 +73,7 @@ console.log("USER:", user);
       id: user.id,
       name: user.name,
       email: user.email,
+      role: user.role,
     },
     token,
   };

@@ -10,6 +10,7 @@ class UserRepository {
                 name: true,
                 email: true,
                 createdAt: true
+                
             }
 
         });

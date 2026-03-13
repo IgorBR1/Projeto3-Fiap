@@ -22,15 +22,19 @@ class UsersController {
 
 
   async create(req: Request, res: Response) {
-    const { name, email, password } = req.body;
+    try {
+      const { name, email, password } = req.body;
 
-    const user = await usersService.create({
-      name,
-      email,
-      password,
-    });
+      const user = await usersService.create({
+        name,
+        email,
+        password,
+      });
 
-    return res.status(201).json(user);
+      return res.status(201).json(user);
+    } catch (error: any) {
+      return res.status(400).json({ message: error.message || "Erro ao criar usuário" });
+    }
   }
 
   async delete(req: Request, res: Response) {
@@ -49,7 +53,7 @@ async update(req: Request, res: Response) {
 
     return res.status(200).json(updatedUser);
   } catch (error) {
-    return res.status(404).json({ error: "Usuário não encontrado" });
+    return res.status(404).json({ message: "Usuário não encontrado" });
   }
 }
 
@@ -58,13 +62,13 @@ async login(req: Request, res: Response) {
   try{
     const { email, password } = req.body;
     if (!email || !password) {
-      return res.status(400).json({ error: "Email e senha são obrigatórios" });
+      return res.status(400).json({ message: "Email e senha são obrigatórios" });
     }
     const result = await usersService.login(email, password);
     return res.status(200).json(result);
 
-  }catch (error) {
-    return res.status(401).json({error: "Credenciais Invalidos", });
+  }catch (error: any) {
+    return res.status(401).json({ message: error.message || "Credenciais Inválidas" });
   }
 
 }
