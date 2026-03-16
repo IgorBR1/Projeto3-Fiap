@@ -5,6 +5,7 @@ import { getPosts } from "@/services/post.service";
 import PostList from "@/components/posts/PostList";
 import { Post } from "@/types/Post";
 import Link from "next/link";
+import SearchPosts from "@/components/posts/SearchComponent";
 
 export default function PostsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -48,6 +49,8 @@ export default function PostsPage() {
         </div>
 
         <div className="mt-8 border-t border-zinc-200 pt-8 dark:border-zinc-800">
+                      <SearchPosts />
+
           {loading && (
             <div className="flex justify-center items-center py-20">
               <span className="flex h-4 w-4 rounded-full bg-indigo-600 animate-ping"></span>

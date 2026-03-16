@@ -40,13 +40,17 @@ class PostsController {
   }
 
 
-  async search(req: Request, res: Response) {
-    const term = req.query.q as string;
+async search(req: Request, res: Response) {
+  const { q } = req.query;
 
-    const posts = await postsService.search(term);
-    return res.json(posts);
+  if (!q) {
+    return res.status(400).json({ error: "Informe uma palavra-chave" });
   }
 
+  const posts = await postsService.search(String(q));
+
+  return res.json(posts);
+}
   async getMyPosts(req: Request, res: Response) {
     const authorId = req.params.authorId as string;
     const posts = await postsService.getByAuthorId(authorId);

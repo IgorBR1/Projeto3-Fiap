@@ -23,12 +23,44 @@ router.get("/search", PostsController.search);
 
 /**
  * @swagger
- * /posts:
+ * /posts/search:
  *   get:
- *     summary: Lista todos os posts
+ *     summary: Busca posts por palavra-chave
+ *     description: Retorna posts que contenham a palavra-chave no título ou conteúdo
+ *     tags:
+ *       - Posts
+ *     parameters:
+ *       - in: query
+ *         name: q
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Palavra-chave para busca
+ *         example: react
  *     responses:
  *       200:
- *         description: Lista de posts retornada com sucesso
+ *         description: Lista de posts encontrados
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                     example: 1
+ *                   title:
+ *                     type: string
+ *                     example: Aprendendo React
+ *                   content:
+ *                     type: string
+ *                     example: React é uma biblioteca JavaScript...
+ *                   authorId:
+ *                     type: integer
+ *                     example: 2
+ *       400:
+ *         description: Palavra-chave não informada
  */
 router.get("/", PostsController.getAll);
 

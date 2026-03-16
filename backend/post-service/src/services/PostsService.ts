@@ -1,5 +1,7 @@
 import postsRepository from "@/repositories/PostsRepository";
-import { Prisma } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 class PostsService {
 
@@ -44,11 +46,29 @@ class PostsService {
     return postsRepository.delete(id);
   }
 
-  async search(term: string) {
-    if (!term || term.trim() === "") return [];
-    return postsRepository.search(term);
-  }
-
+async search(q: string) {
+  return prisma.post.findMany({
+    where: {
+      OR: [
+        {
+          title: {
+            contains: q,
+            mode: "insensitive",
+          },
+        },
+        {
+          content: {
+            contains: q,
+            mode: "insensitive",
+          },
+        },
+      ],
+    },
+    include: {
+      author: true,
+    },
+  });
+}
   async getByAuthorId(authorId: string) {
     return postsRepository.getByAuthorId(authorId);
 }

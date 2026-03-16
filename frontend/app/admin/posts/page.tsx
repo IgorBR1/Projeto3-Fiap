@@ -83,7 +83,7 @@ export default function AdminPostsPage() {
       )}
 
       {posts.map(post => (
-        <div>
+        <div key = {post.id} >
   <article className="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-sm ring-1 ring-zinc-200 transition-all hover:shadow-md dark:bg-zinc-900 dark:ring-zinc-800">
       <div>
         <div className="flex items-center gap-x-4 text-xs">
@@ -106,7 +106,9 @@ export default function AdminPostsPage() {
       <div className="mt-6 flex items-center border-t border-zinc-100 pt-4 dark:border-zinc-800">
         <span className="text-sm font-medium text-indigo-600 dark:text-indigo-400">
           Ler artigo completo <span aria-hidden="true">&rarr;</span>
+          
         </span>
+        
       </div>
     </article>
           <button
