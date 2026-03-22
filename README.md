@@ -24,23 +24,23 @@ Este projeto faz parte da Fase 03 da Pós-Tech FIAP e consiste no desenvolviment
 
 
 ## Instalação e Execução
-1. Clonar o repositório:
-   git clone https://github.com/IgorBR1/Projeto3-Fiap.git
-   cd PROJETO3-FIAP-MASTER
+1. Clonar o repositório:  
+   git clone https://github.com/IgorBR1/Projeto3-Fiap.git  
+   cd PROJETO3-FIAP-MASTER  
 
-2. Configurar o banco de dados:
-   cd backend/post-service
-   docker-compose up -d
+2. Configurar o banco de dados:  
+   cd backend/post-service  
+   docker-compose up -d  
 
-3. Configurar o backend:
-   cd backend/post-service
-   npm install
-   npm run dev
+3. Configurar o backend:  
+   cd backend/post-service  
+   npm install  
+   npm run dev  
 
-4. Configurar o frontend:
-   cd frontend
-   npm install
-   npm run dev
+4. Configurar o frontend:  
+   cd frontend  
+   npm install  
+   npm run dev  
 
 A aplicação estará disponível em:
 - Frontend: http://localhost:3000
@@ -51,59 +51,59 @@ Observação: Existe a possibilidade do frontend ter sido configurado em outra p
 
 
 ## Testes
-Executar testes:
-   cd backend/post-service
-   npm run test
+Executar testes:  
+   cd backend/post-service  
+   npm run test  
 
 
 ## Endpoints
-1. Endpoints de posts:
-GET    /posts
-    Lista todos os posts
+1. Endpoints de posts:  
+GET    /posts  
+    Lista todos os posts  
 
-GET    /posts/{id}
-    Retorna um post específico pelo ID
+GET    /posts/{id}  
+    Retorna um post específico pelo ID  
 
-POST   /posts
-    Cria um novo post (restrito a professores)
+POST   /posts  
+    Cria um novo post (restrito a professores)  
 
-PUT    /posts/{id}
-    Atualiza um post existente (restrito a professores)
+PUT    /posts/{id}  
+    Atualiza um post existente (restrito a professores)  
 
-DELETE /posts/{id}
-    Exclui um post (restrito a professores)
+DELETE /posts/{id}  
+    Exclui um post (restrito a professores)  
 
-GET    /posts/search?keyword=palavra
-    Busca posts por palavra-chave
+GET    /posts/search?keyword=palavra  
+    Busca posts por palavra-chave  
 
-GET    /posts/author/{authorId}
-    Retorna todos os posts de um autor específico
+GET    /posts/author/{authorId}  
+    Retorna todos os posts de um autor específico  
 
-2. Endpoints de usuários:
-GET    /users
-    Lista todos os usuários
+2. Endpoints de usuários:  
+GET    /users  
+    Lista todos os usuários  
 
-GET    /users/{id}
-    Retorna um usuário pelo ID
+GET    /users/{id}  
+    Retorna um usuário pelo ID  
 
-POST   /users
-    Cria um novo usuário
+POST   /users  
+    Cria um novo usuário  
 
-PUT    /users/{id}
-    Atualiza um usuário existente
+PUT    /users/{id}  
+    Atualiza um usuário existente  
 
-DELETE /users/{id}
-    Exclui um usuário
+DELETE /users/{id}  
+    Exclui um usuário  
 
-POST   /users/login
-    Realiza login de usuário
+POST   /users/login  
+    Realiza login de usuário  
 
-3. Endpoints de autenticação:
-POST   /login
-    Autenticação de professores
+3. Endpoints de autenticação:  
+POST   /login  
+    Autenticação de professores  
 
-POST   /register
-    Registro de novos usuários
+POST   /register  
+    Registro de novos usuários  
 
 
 ## Equipe
