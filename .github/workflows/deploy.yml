@@ -1,9 +1,8 @@
-name: CD
+name: CI/CD
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -19,14 +18,17 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install
+      - name: Instalar dependências
         run: npm install
+        working-directory: ./backend/post-service
 
-      - name: Build app
-        run: npm run build || echo "no build script"
+      - name: Build
+        run: npm run build || echo "no build"
+        working-directory: ./backend/post-service
+
+      - name: Teste
+        run: npm test
+        working-directory: ./backend/post-service
 
       - name: Build Docker image
-        run: docker build -t my-app .
-
-      - name: Success
-        run: echo "CD executado com sucesso 🚀"
+        run: docker build -t my-app ./backend/post-service
