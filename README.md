@@ -57,7 +57,8 @@ Executar testes:
 
 
 ## Endpoints
-1. Endpoints de posts:  
+1. Endpoints de posts:
+
 GET    /posts  
     Lista todos os posts  
 
@@ -79,7 +80,8 @@ GET    /posts/search?keyword=palavra
 GET    /posts/author/{authorId}  
     Retorna todos os posts de um autor específico  
 
-2. Endpoints de usuários:  
+2. Endpoints de usuários:
+
 GET    /users  
     Lista todos os usuários  
 
@@ -98,7 +100,8 @@ DELETE /users/{id}
 POST   /users/login  
     Realiza login de usuário  
 
-3. Endpoints de autenticação:  
+3. Endpoints de autenticação:
+
 POST   /login  
     Autenticação de professores  
 
