@@ -1,4 +1,6 @@
+## Full Stack Development - FIAP
 ## Tech Challenge – Fase 03
+
 
 ## Sobre o Projeto
 Este projeto faz parte da Fase 03 da Pós-Tech FIAP e consiste no desenvolvimento de uma aplicação de blogging full stack, com frontend em Next.js/React e backend em Node.js/TypeScript. O objetivo é oferecer uma interface gráfica responsiva e intuitiva, permitindo que docentes e estudantes interajam com posts por meio de endpoints REST, com autenticação e autorização.
@@ -26,16 +28,16 @@ Este projeto faz parte da Fase 03 da Pós-Tech FIAP e consiste no desenvolviment
    git clone https://github.com/IgorBR1/Projeto3-Fiap.git
    cd PROJETO3-FIAP-MASTER
 
-2. Subir o banco de dados:
+2. Configurar o banco de dados:
    cd backend/post-service
    docker-compose up -d
 
-3. Configurar o Backend:
+3. Configurar o backend:
    cd backend/post-service
    npm install
    npm run dev
 
-4. Configurar o Frontend:
+4. Configurar o frontend:
    cd frontend
    npm install
    npm run dev
@@ -55,8 +57,7 @@ Executar testes:
 
 
 ## Endpoints
-ENDPOINTS DE POSTS:
-
+1. Endpoints de posts:
 GET    /posts
     Lista todos os posts
 
@@ -78,7 +79,7 @@ GET    /posts/search?keyword=palavra
 GET    /posts/author/{authorId}
     Retorna todos os posts de um autor específico
 
-ENDPOINTS DE USUÁRIOS:
+2. Endpoints de usuários:
 GET    /users
     Lista todos os usuários
 
@@ -97,7 +98,7 @@ DELETE /users/{id}
 POST   /users/login
     Realiza login de usuário
 
-ENDPOINTS DE AUTENTICAÇÃO:
+3. Endpoints de autenticação:
 POST   /login
     Autenticação de professores
 
