@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 class UsersService {
   async getAll() {
     return userRepository.getAll();
+    
   }
 
     async getById(id: string) {
