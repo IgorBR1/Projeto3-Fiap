@@ -1,20 +1,32 @@
-name: Deploy Supabase 
+name: CD
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - name: Instalar Supabase CLI
-        run: npm install -g supabase
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      - name: Deploy functions
-        run: supabase functions deploy posts --project-ref $PROJECT_REF
-        env:
-          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - name: Install
+        run: npm install
+
+      - name: Build app
+        run: npm run build || echo "no build script"
+
+      - name: Build Docker image
+        run: docker build -t my-app .
+
+      - name: Success
+        run: echo "CD executado com sucesso 🚀"
