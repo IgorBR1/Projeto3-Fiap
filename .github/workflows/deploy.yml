@@ -1,4 +1,4 @@
-name: Deploy Supabase Functions
+name: Deploy Supabase 
 
 on:
   push:
@@ -22,4 +22,3 @@ jobs:
         # Value: Your Supabase access token with permissions to deploy functions.
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-            
