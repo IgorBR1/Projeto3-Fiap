@@ -1,0 +1,25 @@
+name: Deploy Supabase Functions
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Supabase CLI
+        run: npm install -g supabase
+
+      - name: Deploy functions
+        run: supabase functions deploy posts --project-ref $PROJECT_REF
+        # Ensure SUPABASE_ACCESS_TOKEN is set in your repository's GitHub Secrets:
+        # Go to your repository on GitHub > Settings > Secrets and variables > Actions > New repository secret.
+        # Name: SUPABASE_ACCESS_TOKEN
+        # Value: Your Supabase access token with permissions to deploy functions.
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+            
