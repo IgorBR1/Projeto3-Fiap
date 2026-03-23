@@ -49,7 +49,6 @@ class UsersService {
   const user = await userRepository.getByEmailWithPassword(email);
 console.log("USER:", user);
   console.log("EMAIL RECEBIDO:", email);
-  console.log("SENHA RECEBIDA:", password);
   console.log("HASH NO BANCO:", user?.password);
 
   if (!user) {
